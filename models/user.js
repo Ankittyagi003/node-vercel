@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/mongouser");
+mongoose.connect("mongodb+srv://tyagiiankit254:gxb7U9V5crQa2KG9@cluster2.cmiii.mongodb.net/");
 
 const userSchema=mongoose.Schema({
 name:String,
