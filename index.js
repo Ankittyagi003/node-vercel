@@ -4,6 +4,7 @@ const path= require("path");
 const userModel =require("./models/user.js")
 const  cookieParser=require("cookie-parser");
 const cors=require("cors");
+ require("dotenv").config();
 
 const jwt=require("jsonwebtoken");
 const checkLogin = require("./middleware.js");
@@ -28,7 +29,6 @@ app.get("/api/login",(req,res)=>{
 app.get("/",(req,res)=>{
   res.render("form")
 
-
 });
 
 
@@ -40,7 +40,7 @@ app.post("/api/photo",upload.single("image"),checkLogin,async(req,res)=>{
     return res.send("please select image file")
    }
   const user= await userModel.findById(data.data.userid);
-      console.log(user);
+      
      user.profilepic=req.file.filename;
      await user.save();
      res.redirect("/api/profile")
@@ -147,7 +147,7 @@ app.post("/api/edit/:id",async(req,res)=>{
 
 
 
-app.listen(3001,()=>{
+app.listen(process.env.PORT,()=>{
     console.log(`this is good port`);
 });
 
