@@ -16,8 +16,6 @@ app.use(express.static(path.join(__dirname,"publics")));
 app.use(cookieParser());
 app.set("view engine","ejs");
 
-
-
 app.get("/api/login",(req,res)=>{
   res.render("login");
 })
